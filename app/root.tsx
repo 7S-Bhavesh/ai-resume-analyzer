@@ -40,6 +40,40 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (typeof window === 'undefined') return;
+                if (window.XMLHttpRequest) {
+                  const originalSetRequestHeader = XMLHttpRequest.prototype.setRequestHeader;
+                  XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
+                    if (header && header.toLowerCase() === 'origin') {
+                      return;
+                    }
+                    return originalSetRequestHeader.apply(this, arguments);
+                  };
+                }
+                if (window.Headers) {
+                  const originalSet = Headers.prototype.set;
+                  Headers.prototype.set = function(header, value) {
+                    if (header && header.toLowerCase() === 'origin') {
+                      return;
+                    }
+                    return originalSet.apply(this, arguments);
+                  };
+                  const originalAppend = Headers.prototype.append;
+                  Headers.prototype.append = function(header, value) {
+                    if (header && header.toLowerCase() === 'origin') {
+                      return;
+                    }
+                    return originalAppend.apply(this, arguments);
+                  };
+                }
+              })();
+            `,
+          }}
+        />
         <script src="https://js.puter.com/v2/"></script>
         {children}
         <ScrollRestoration />

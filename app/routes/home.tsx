@@ -36,8 +36,8 @@ useEffect(() => {
       {resumes.length > 0 && (
         <div className="resume-sections">
           {resumes.map((resume) => (
-            <div>
-              <ResumeCard key={resume.id} resume={resume} />
+            <div key={resume.id}>
+              <ResumeCard resume={resume} />
             </div>
           ))}
         </div>
