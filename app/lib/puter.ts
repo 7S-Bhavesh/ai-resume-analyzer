@@ -351,7 +351,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
         },
       ],
       {
-        model: "gemini-2.5-flash",
+        model: "gemini-3.5-flash",
       }
     ) as Promise<AIResponse | undefined>;
   };

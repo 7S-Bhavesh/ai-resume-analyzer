@@ -155,4 +155,6 @@ export const prepareInstructions = ({
   The job description is: ${jobDescription}
   Provide the feedback using the following format: ${AIResponseFormat}
   Return the analysis as a JSON object, without any other text and without the backticks.
-  Do not include any other text or comments.`;
+  Do not include any other text or comments.
+  Give high in case of word -matching with the job description like 70 to 80 score when all the skills are matching
+  `;
