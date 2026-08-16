@@ -74,6 +74,8 @@ const Upload = () => {
             setStatusText('Analysis complete, redirecting...');
             console.log(data);
             navigate(`/resume/${uuid}`);
+
+            
         } catch (error: any) {
             console.error("Analysis process failed:", error);
             setIsProcessing(false);
